@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>S1QL Converter</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">S1QL 1.0 → S1QL 2.0 Converter</div>
+
+    <div class="editor">
+      <!-- Input Box -->
+      <div class="textarea-wrapper">
+        <textarea id="input" placeholder="Enter Legacy Deep Visibility (S1QL 1.0) query..."></textarea>
+        <span class="textarea-icon delete" onclick="clearInput()">🗑️</span>
+        <span class="textarea-icon copy" onclick="copyInput()">📋</span>
+      </div>
+
+      <!-- Output Box -->
+      <div class="textarea-wrapper">
+        <textarea id="output" readonly placeholder="Converted S1QL 2.0 query will appear here..."></textarea>
+        <span class="textarea-icon delete" onclick="clearOutput()">🗑️</span>
+        <span class="textarea-icon copy" onclick="copyOutput()">📋</span>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button class="convert-button" onclick="convertQuery()">
+        <span class="button-text">Convert</span>
+        <span class="button-icon">→</span>
+      </button>
+    </div>
+
+    <!-- Popup for copy success -->
+    <div class="popup" id="popup">Copied to clipboard!</div>
+
+    <!-- Error popup for missing fields -->
+    <div class="popup" id="errorPopup">
+      <div class="popup-content">
+        <h3>Missing Field Mappings</h3>
+        <p>The following fields are not defined in <code>fieldMap.js</code>:</p>
+        <div id="missingFields"></div>
+      </div>
+      <div class="popup-buttons">
+        <button onclick="copyMissingFields()">Copy Missing Fields</button>
+        <button onclick="closeErrorPopup()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load JavaScript files -->
+  <script src="fieldMap.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
