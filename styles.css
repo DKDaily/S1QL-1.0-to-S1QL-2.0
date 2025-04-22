@@ -32,7 +32,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   background: var(--glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -81,7 +81,7 @@ body {
 
 .textarea-wrapper {
   position: relative;
-  height: 300px;
+  height: 350px;
 }
 
 textarea {
