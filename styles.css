@@ -8,9 +8,9 @@
   --error: #ef4444;
   --success: #10b981;
   --glass: rgba(255, 255, 255, 0.08);
-  --border-radius: 12px;
-  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --transition: all 0.2s ease-in-out;
+  --border-radius: 14px;
+  --shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s ease-in-out;
 }
 
 * {
@@ -27,15 +27,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px;
 }
 
 .container {
   width: 100%;
   max-width: 1400px;
   background: var(--glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--border-radius);
   padding: 2rem;
   box-shadow: var(--shadow);
@@ -43,33 +43,25 @@ body {
 }
 
 .header {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
   text-align: center;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  position: relative;
 }
 
+/* Removed the underline line completely */
 .header::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  border-radius: 3px;
+  display: none;
 }
 
 .editor {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -88,13 +80,12 @@ textarea {
   width: 100%;
   height: 100%;
   padding: 1.5rem;
-  padding-bottom: 2.5rem;
   border-radius: var(--border-radius);
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(15, 23, 42, 0.6);
   color: var(--light);
   font-family: 'Inter', monospace;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.5;
   resize: none;
   outline: none;
@@ -103,7 +94,7 @@ textarea {
 
 textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
 }
 
 textarea::placeholder {
@@ -112,12 +103,12 @@ textarea::placeholder {
 
 .textarea-icon {
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0.7rem;
   cursor: pointer;
   opacity: 0.7;
   transition: var(--transition);
-  font-size: 1.2rem;
-  padding: 0.3rem;
+  font-size: 1.3rem;
+  padding: 0.4rem;
   z-index: 10;
 }
 
@@ -127,46 +118,42 @@ textarea::placeholder {
 }
 
 .textarea-icon.delete {
-  left: 0.5rem;
+  left: 1rem;
   color: var(--error);
 }
 
 .textarea-icon.copy {
-  right: 0.5rem;
+  right: 1rem;
   color: var(--success);
 }
 
 .button-row {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .convert-button {
   background: linear-gradient(90deg, var(--primary), var(--primary-dark));
   color: white;
   border: none;
-  padding: 0.8rem 2.5rem;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 0.9rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   border-radius: 50px;
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .convert-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.convert-button:active {
-  transform: translateY(0);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.3);
 }
 
 .popup {
@@ -196,6 +183,7 @@ textarea::placeholder {
   max-width: 400px;
   padding: 1.5rem;
   display: none;
+  border-radius: var(--border-radius);
 }
 
 #errorPopup.show {
@@ -221,6 +209,8 @@ textarea::placeholder {
   border-radius: 6px;
   font-family: monospace;
   margin-top: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .popup-buttons {
